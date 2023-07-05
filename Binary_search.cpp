@@ -22,6 +22,23 @@ int binary_Search(int arr[], int n, int x)
 	}
 
 	return -1;
+
+
+	/*				recursive approach
+ 	if(low > high)
+		return -1;
+
+	int mid = low+(low-high)/2;
+
+	if(arr[mid] == x)
+		return mid;
+
+	else if(arr[mid] > x)
+		return bSearch(arr, low, mid - 1, x);
+
+	else
+		return bSearch(arr, mid + 1, high, x);
+		*/
 }
 
 int main() {
