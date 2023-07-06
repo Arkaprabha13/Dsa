@@ -20,6 +20,19 @@ void print_list(node * head)
         current=current->next;
     }   
 }
+
+//                RECURSIVE FUNCTION
+/*
+            void r_print(node *head)
+{
+    if(head==NULL)
+    {
+        return ;
+    }
+    cout<<head->data<<" ";
+    r_print(head->next);
+}
+    */
 int main()
 {
     node *head=new node(10);
