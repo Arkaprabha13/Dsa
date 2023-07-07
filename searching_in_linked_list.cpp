@@ -28,6 +28,25 @@ int search(node *head, int n)
     }
     return -1;
 }
+int recursive_search(node *head,int x)
+{
+    if(head==NULL)
+    {
+        return -1;
+    }
+    if(head->data==x)
+    {
+        return 1;
+    }
+    else{
+        int result=recursive_search(head->next,x);
+        if(result==-1)
+        {
+            return -1;
+        }
+        else return (result+1);
+    }
+}
 
 int main()
 {
