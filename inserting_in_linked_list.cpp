@@ -16,6 +16,21 @@ node *insert_at_begin(node *head,int x)
     temp->next=head;
     return temp;
 }
+node * insert_at_end(node *head,int x)
+{
+    node * temp=new node(x);
+    if(head==NULL)
+    {
+        return temp;
+    }
+    node *current=head;
+    while(current!=NULL)
+    {
+        current=current->next;
+    }
+    current->next=temp;
+    return head;
+}
 
 void r_print(node *head)
 {
