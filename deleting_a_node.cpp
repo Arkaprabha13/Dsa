@@ -23,7 +23,26 @@ node *delete_head_from_head(node *head)
         return temp;
     }
 }
+node * delete_from_end(node *head)
+{
+    if (head==NULL)
+    {
+        return NULL;
+    }
+    if(head->next==NULL)
+    {
+        delete head;
+        return NULL;
+    }
+    node *current=head;
+    while(current->next->next!=NULL){
+        current=current->next;
+    }
+    delete (current->next);
+    current->next=NULL;
+    return head;
 
+}
 void printlist(node *head)
 {
     node *curr = head;
