@@ -24,7 +24,7 @@ node * insert_at_end(node *head,int x)
         return temp;
     }
     node *current=head;
-    while(current!=NULL)
+    while(current->next!=NULL)
     {
         current=current->next;
     }
