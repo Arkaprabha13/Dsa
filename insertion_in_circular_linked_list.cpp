@@ -66,6 +66,25 @@ node *optimised_insertion_at_head(node *head, int x)
         return head;
     }
 }
+node *optimised_insertion_at_end(node *head, int x)
+{
+    node *temp = new node(x);
+    if (head == NULL)
+    {
+        temp->next = temp;
+        return temp;
+    }
+    else
+    {
+        temp->next = head->next;        //  inserting temp after head
+        head->next = temp;
+        int swap = temp->data;             // swapping
+        temp->data = head->data;
+        head->data = swap;      
+        return temp;                        // temp is new head
+        
+    }
+}
 void print_list(node *head)
 {
     if (head == NULL)
