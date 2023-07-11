@@ -24,8 +24,19 @@ node *insert_at_begin(node *head, int data)
 }
 node * insert_at_end(node*head,int data)
 {
-    node *temp=new node(data);
-    
+   node *temp = new node(data);
+    if (head == NULL)
+    {
+        return temp;
+    }
+    node *current = head;
+    while (current->next != NULL)
+    {
+        current = current->next;
+    }
+    current->next=temp;
+    temp->prev=current;
+    return head;
 }
 void printlist(node *head)
 {
