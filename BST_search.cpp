@@ -12,6 +12,7 @@ struct Node
   }
 };
 
+//recursivee function
 bool recursive_search(Node *root, int x){
     if(root==NULL)
         return false;
