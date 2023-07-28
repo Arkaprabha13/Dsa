@@ -21,9 +21,24 @@ int max_of_1s(int *a, int n)
     }
     return result;
 }
-int efficeient_filter(int *a,int n)
+int efficient_consecutive(int *a, int n)
 {
-    
+    int result = 0;
+    int current = 0;
+    for (int i = 0; i < n; i++)
+    {
+
+        if (a[i] == 0)
+        {
+            current = 0;
+        }
+        else
+        {
+            current++;
+            result = max(result, current);
+        }
+    }
+    return result;
 }
 int main()
 {
