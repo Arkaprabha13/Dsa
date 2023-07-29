@@ -40,7 +40,26 @@
 #include <vector>
 
 using namespace std;
-
+int get_equi(const vector<int> &v)
+{
+    int n = v.size();
+    int left_sum = 0;
+    int right_sum = 0;
+    for (int i = 0; i < n; i++)
+    {
+        right_sum += v[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        right_sum -= v[i];
+        if (left_sum == right_sum)
+        {
+            return i;
+        }
+        left_sum += v[i];
+    }
+    return -1;
+}
 int findEquilibriumIndex(const vector<int>& nums) {
     int n = nums.size();
     int totalSum = 0;
