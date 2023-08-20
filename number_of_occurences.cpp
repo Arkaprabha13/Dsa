@@ -1,16 +1,34 @@
 //{ Driver Code Starts
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-
 // } Driver Code Ends
-//User function template for C++
-class Solution{
-public:	
-	/* if x is present in arr[] then returns the count
-		of occurrences of x, otherwise returns 0. */
-int upperbound(int a[], int n, int x)
+// User function template for C++
+class Solution
+{
+public:
+    /* if x is present in arr[] then returns the count
+        of occurrences of x, otherwise returns 0. */
+    // int count(int arr[], int n, int x) {
+    //     // code here
+    //   unordered_map<int, int> m;
+    //     for (int i = 0; i < n; i++)
+    //     {
+    //         m[arr[i]]++;
+    //     }
+    //     for (auto k : m)
+    //     {
+    //         if (k.first == x)
+    //         {
+    //             // cout << k.second;
+    //             return k.second;
+
+    //         }
+    //     }
+    //     return 0;
+    // }
+    int upperbound(int a[], int n, int x)
     {
         int low = 0;
         int high = n - 1;
@@ -55,36 +73,21 @@ int upperbound(int a[], int n, int x)
         // code here
         return (upperbound(arr, n, x) - lowerbound(arr, n, x));
     }
-	int count(int arr[], int n, int x) {
-	    // code here
-	  unordered_map<int, int> m;
-        for (int i = 0; i < n; i++)
-        {
-            m[arr[i]]++;
-        }
-        for (auto k : m)
-        {
-            if (k.first == x)
-            {
-                // cout << k.second;
-                return k.second;
-                
-            }
-        }
-        return 0;
-	}
 };
 
 //{ Driver Code Starts.
 
-int main() {
+int main()
+{
     int t;
     cin >> t;
-    while (t--) {
+    while (t--)
+    {
         int n, x;
         cin >> n >> x;
         int arr[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
+        {
             cin >> arr[i];
         }
         Solution ob;
