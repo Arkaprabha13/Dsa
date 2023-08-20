@@ -10,6 +10,51 @@ class Solution{
 public:	
 	/* if x is present in arr[] then returns the count
 		of occurrences of x, otherwise returns 0. */
+int upperbound(int a[], int n, int x)
+    {
+        int low = 0;
+        int high = n - 1;
+        int ans = n;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if (a[mid] <= x)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+                ans = mid; // Update ans only when a[mid] > x
+            }
+        }
+        return ans;
+    }
+    int lowerbound(int a[], int n, int x)
+    {
+        int low = 0;
+        int high = n - 1;
+        int ans = n;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if (a[mid] >= x)
+            {
+                high = mid - 1;
+                ans = mid; // Update ans only when a[mid] >= x
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+    int count(int arr[], int n, int x)
+    {
+        // code here
+        return (upperbound(arr, n, x) - lowerbound(arr, n, x));
+    }
 	int count(int arr[], int n, int x) {
 	    // code here
 	  unordered_map<int, int> m;
