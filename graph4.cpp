@@ -162,9 +162,53 @@ public:
         {
             if (!visited[neighbour])
             {
-                dfs(neighbour, visited);
+                topological_sort_using_DFS(neighbour, visited, ans);
             }
-            ans.push(source);
+        }
+        ans.push(source);
+    }
+    void topological_sort_using_bfs(int n, vector<int> &ans)
+    {
+        queue<int> q;
+        unordered_map<int, int> indegree;
+
+        // getting indegree of all
+
+        for (auto i : adjList)
+        {
+            int source = i.first;
+            for (auto neighbour : i.second)
+            {
+                indegree[neighbour]++;
+            }
+        }
+
+        // putting all node for indegree 0
+        for (int i = 0; i < n; i++)
+        {
+            if (indegree[i] == 0)
+            {
+                q.push(i);
+            }
+        }
+
+        // bfs logic
+        while (!q.empty())
+        {
+            int fornt_node = q.front();
+            q.pop();
+
+            // cout << fornt_node << " ";
+            ans.push_back(fornt_node);
+            for (auto neighbour : adjList[fornt_node])
+            {
+                indegree[neighbour]--;
+                // check for zero again
+                if (indegree[neighbour] == 0)
+                {
+                    q.push(neighbour);
+                }
+            }
         }
     }
 };
@@ -177,12 +221,17 @@ int main()
     g.addEdge(0, 1, 1);
     g.addEdge(1, 2, 1);
     g.addEdge(2, 3, 1);
-    g.addEdge(3, 1, 1);
-    g.addEdge(3, 7, 1);
+    g.addEdge(3, 4, 1);
+
+    g.addEdge(3, 5, 1);
+    g.addEdge(4, 6, 1);
+    g.addEdge(5, 6, 1);
     g.addEdge(6, 7, 1);
-    g.addEdge(7, 0, 1);
-    g.addEdge(7, 1, 1);
     g.printAdjacencyList();
+    cout << endl;
+
+    // for DFS
+    cout << "Topological sort using DFS" << endl;
     for (int i = 0; i < n; i++)
     {
         if (!visited[i])
@@ -192,10 +241,20 @@ int main()
     }
     while (!ans.empty())
     {
-        int data = ans.top();
-        cout
-            << data << " ";
+
+        cout << ans.top() << " ";
         ans.pop();
     }
+
+    // For BFS
+
+    vector<int> ans_bfs;
+    g.topological_sort_using_bfs(n, ans_bfs);
+    cout << "\nTopological sort using BFS" << endl; // KAHNS Algorithm
+    for (auto it : ans_bfs)
+    {
+        cout << it << " ";
+    }
+    cout << endl;
     return 0;
 }
