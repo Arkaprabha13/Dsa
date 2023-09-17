@@ -16,7 +16,7 @@ int lcs_recursion(string s1, string s2, int m, int n)
         return max(lcs_recursion(s1, s2, m, n - 1), lcs_recursion(s1, s2, m - 1, n));
     }
 }
-
+// bootom up approach 
 int lcs_using_tabulation(string s1, string s2)
 {
     int m = s1.length();
@@ -54,7 +54,7 @@ int lcs_using_tabulation(string s1, string s2)
     }
     return dp[m][n];
 }
-
+// top down approach
 int lcs_using_memozisation(string s1, string s2, int m, int n, vector<vector<int>> &memo)
 {
     if (memo[m][n] != -1)
