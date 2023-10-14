@@ -58,3 +58,29 @@ int main()
     // cout << endl;
     // inorder(root);
 }
+
+
+
+/*
+new method of findinf floor in BST
+  void inorder(Node*root,int x,int &ans)
+    {
+        if(root!=NULL)
+        {
+            inorder(root->left,x,ans);
+            if(root->data<=x)
+            {
+                ans=min(x,root->data);
+            }
+            inorder(root->right,x,ans);
+        }
+    }
+    int floor(Node* root, int x) {
+        // Code here
+        int ans=-1;
+        inorder(root,x,ans);
+        return ans;
+        
+    }
+
+*/
